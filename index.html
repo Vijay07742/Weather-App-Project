@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atmos Weather</title>
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="weather-panel" aria-label="Weather app">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Live forecast</p>
+            <h1>Atmos</h1>
+          </div>
+          <button class="icon-button" id="locationButton" type="button" title="Use current location" aria-label="Use current location">
+            <span aria-hidden="true">⌖</span>
+          </button>
+        </header>
+
+        <form class="search" id="searchForm" autocomplete="off">
+          <label class="sr-only" for="cityInput">Search city</label>
+          <input id="cityInput" name="city" type="search" placeholder="Search city, country" spellcheck="false" />
+          <button type="submit">Search</button>
+        </form>
+
+        <p class="status" id="status" role="status">Search for a city to see the current forecast.</p>
+
+        <section class="hero-weather" id="weatherCard" hidden>
+          <div class="hero-copy">
+            <p class="place" id="placeName">--</p>
+            <p class="condition" id="conditionText">--</p>
+            <p class="updated" id="updatedAt">--</p>
+          </div>
+          <div class="temperature-wrap">
+            <div class="weather-orbit" id="weatherVisual" aria-hidden="true">
+              <span class="sun-core"></span>
+              <span class="cloud cloud-one"></span>
+              <span class="cloud cloud-two"></span>
+              <span class="rain rain-one"></span>
+              <span class="rain rain-two"></span>
+              <span class="rain rain-three"></span>
+            </div>
+            <p class="temperature"><span id="temperature">--</span><span>°</span></p>
+          </div>
+        </section>
+
+        <section class="metrics" id="metrics" hidden aria-label="Current weather details">
+          <article>
+            <span>Feels like</span>
+            <strong id="feelsLike">--°</strong>
+          </article>
+          <article>
+            <span>Wind</span>
+            <strong id="windSpeed">-- km/h</strong>
+          </article>
+          <article>
+            <span>Humidity</span>
+            <strong id="humidity">--%</strong>
+          </article>
+          <article>
+            <span>Pressure</span>
+            <strong id="pressure">-- hPa</strong>
+          </article>
+        </section>
+
+        <section class="forecast-section" id="forecastSection" hidden>
+          <div class="section-heading">
+            <h2>7-day outlook</h2>
+            <span id="timezoneLabel">--</span>
+          </div>
+          <div class="forecast-grid" id="forecastGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
